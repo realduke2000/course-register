@@ -1,5 +1,5 @@
 /********************************************************************
- * File Name:    Course.java
+ * File Name:    CourseInfomation.java
  *
  * Date Created: Dec 28, 2016
  *
@@ -11,8 +11,19 @@ package org.hhlstudio.school.model;
 
 import java.io.Serializable;
 
-public class Course implements Serializable
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "course_info")
+public class CourseInfomation implements Serializable
 {
+
   public String getCourseName()
   {
     return courseName;
@@ -23,16 +34,24 @@ public class Course implements Serializable
     this.courseName = courseName;
   }
 
-  public int getCourseId()
+
+  public int getCourseInfomationId()
   {
-    return courseId;
+    return courseInfomationId;
   }
 
-  public void setCourseId(int courseId)
+  public void setCourseInfomationId(int courseInfomationId)
   {
-    this.courseId = courseId;
+    this.courseInfomationId = courseInfomationId;
   }
 
-  private int courseId;
+
+  @Id
+  @GeneratedValue(generator = "increment")
+  @GenericGenerator(name = "increment", strategy = "increment")
+  @Column(name = "id")
+  private int courseInfomationId;
+
+  @Column(name = "name")
   private String courseName;
 }
